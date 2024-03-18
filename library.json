@@ -1,6 +1,6 @@
 {
     "name": "EasyOsc",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "keywords": "sound, encoding, OSC",
     "license": "MIT",
     "description": "Wrapper for OSC library",
@@ -17,6 +17,9 @@
       "url": "git@github.com:oogre/EasyOsc.git"
     },
     "frameworks": "arduino",
-    "platforms": ["espressif32"]
+    "platforms": ["espressif32"],
+    "dependencies": {
+      "CNMAT/OSC": "1.0.0"
+    }
   }
   
