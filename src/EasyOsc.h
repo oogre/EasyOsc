@@ -5,8 +5,8 @@
 #include <Arduino.h>
 
 #include "Dictionary/Dictionary.h"
-#include <OSCMessage.h>
-#include <OSCBoards.h>
+#include "OSC/OSCMessage.h"
+#include "OSC/OSCBoards.h"
 #include <functional>
 #include <utility>
 
