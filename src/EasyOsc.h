@@ -5,16 +5,16 @@
 #include <Arduino.h>
 
 #include "Dictionary/Dictionary.h"
-#include <OSCMessage.h>
-#include <OSCBoards.h>
+#include "OSC/OSCMessage.h"
+#include "OSC/OSCBoards.h"
 #include <functional>
 #include <utility>
 
 #ifdef BOARD_HAS_USB_SERIAL
-#include <SLIPEncodedUSBSerial.h>
+#include "OSC/SLIPEncodedUSBSerial.h"
 SLIPEncodedUSBSerial SLIPSerial( thisBoardsSerialUSB );
 #else
-#include <SLIPEncodedSerial.h>
+#include "OSC/SLIPEncodedSerial.h"
 SLIPEncodedSerial SLIPSerial(Serial); // Change to Serial1 or Serial2 etc. for boards with multiple serial ports that don’t have Serial
 #endif
 
@@ -231,6 +231,13 @@ class EasyOsc {
           case REGULAR_WIFI:
             if(conf.pwd.equals(""))WiFi.begin(conf.ssid);
             else WiFi.begin(conf.ssid, conf.pwd);
+            Serial.println("Connecting on : " + conf.ssid);
+            while(WiFi.status() != WL_CONNECTED){
+              delay(500);
+              Serial.print(".");
+            }
+            Serial.println("\nDone");
+
             Udp.begin(conf.inPort);
            return WiFi.localIP();
 
